@@ -104,12 +104,17 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
     
     // Configure the cell...
   NSString *text = [NSString stringWithFormat:@"Send: %i - Received: %i", [[[data objectAtIndex:indexPath.row]valueForKey:@"send"]intValue], [[[data objectAtIndex:indexPath.row]valueForKey:@"result"]intValue]];
   cell.textLabel.text = text;
+  
+  NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+  [formatter setDateFormat:@"dd.MM.yyyy HH:mm:ss"];
+  NSString *time = [formatter stringFromDate:[[data objectAtIndex:indexPath.row] valueForKey:@"createdAt"]];
+  cell.detailTextLabel.text = time;
     
     return cell;
 }
