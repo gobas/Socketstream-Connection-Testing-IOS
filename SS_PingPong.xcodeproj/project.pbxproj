@@ -10,6 +10,9 @@
 		963E4CDC14989EC6001BA4AB /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 963E4CDB14989EC6001BA4AB /* Icon.png */; };
 		963E4CDF14989ECA001BA4AB /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 963E4CDE14989ECA001BA4AB /* Icon@2x.png */; };
 		963E4CE21498A6F7001BA4AB /* Request.m in Sources */ = {isa = PBXBuildFile; fileRef = 963E4CE11498A6F7001BA4AB /* Request.m */; };
+		963E4CE61498B0B0001BA4AB /* ConfigViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 963E4CE41498B0B0001BA4AB /* ConfigViewController.m */; };
+		963E4CE71498B0B0001BA4AB /* ConfigView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 963E4CE51498B0B0001BA4AB /* ConfigView.xib */; };
+		963E4CE91498B2A9001BA4AB /* third.png in Resources */ = {isa = PBXBuildFile; fileRef = 963E4CE81498B2A9001BA4AB /* third.png */; };
 		965BC51B1497C7AD00E6D171 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 965BC51A1497C7AD00E6D171 /* UIKit.framework */; };
 		965BC51D1497C7AD00E6D171 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 965BC51C1497C7AD00E6D171 /* Foundation.framework */; };
 		965BC51F1497C7AD00E6D171 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 965BC51E1497C7AD00E6D171 /* CoreGraphics.framework */; };
@@ -65,6 +68,10 @@
 		963E4CDE14989ECA001BA4AB /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		963E4CE01498A6F7001BA4AB /* Request.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Request.h; sourceTree = "<group>"; };
 		963E4CE11498A6F7001BA4AB /* Request.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Request.m; sourceTree = "<group>"; };
+		963E4CE31498B0B0001BA4AB /* ConfigViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigViewController.h; sourceTree = "<group>"; };
+		963E4CE41498B0B0001BA4AB /* ConfigViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfigViewController.m; sourceTree = "<group>"; };
+		963E4CE51498B0B0001BA4AB /* ConfigView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConfigView.xib; sourceTree = "<group>"; };
+		963E4CE81498B2A9001BA4AB /* third.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = third.png; sourceTree = "<group>"; };
 		965BC5161497C7AD00E6D171 /* SS_PingPong.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SS_PingPong.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		965BC51A1497C7AD00E6D171 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		965BC51C1497C7AD00E6D171 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -219,6 +226,9 @@
 				965BC5441497C87900E6D171 /* ResultsViewController.h */,
 				965BC5451497C87900E6D171 /* ResultsViewController.m */,
 				965BC5461497C87900E6D171 /* ResultsView.xib */,
+				963E4CE31498B0B0001BA4AB /* ConfigViewController.h */,
+				963E4CE41498B0B0001BA4AB /* ConfigViewController.m */,
+				963E4CE51498B0B0001BA4AB /* ConfigView.xib */,
 			);
 			path = SS_PingPong;
 			sourceTree = "<group>";
@@ -242,6 +252,7 @@
 				965BC54A1497C92500E6D171 /* first@2x.png */,
 				965BC54B1497C92500E6D171 /* second.png */,
 				965BC54C1497C92500E6D171 /* second@2x.png */,
+				963E4CE81498B2A9001BA4AB /* third.png */,
 			);
 			name = graphics;
 			sourceTree = "<group>";
@@ -415,6 +426,8 @@
 				965BC5E11497D08900E6D171 /* changes.txt in Resources */,
 				963E4CDC14989EC6001BA4AB /* Icon.png in Resources */,
 				963E4CDF14989ECA001BA4AB /* Icon@2x.png in Resources */,
+				963E4CE71498B0B0001BA4AB /* ConfigView.xib in Resources */,
+				963E4CE91498B2A9001BA4AB /* third.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -457,6 +470,7 @@
 				965BC5EF1497D08900E6D171 /* SocketIO.m in Sources */,
 				965BC5F01497D08900E6D171 /* WebSocket.m in Sources */,
 				963E4CE21498A6F7001BA4AB /* Request.m in Sources */,
+				963E4CE61498B0B0001BA4AB /* ConfigViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

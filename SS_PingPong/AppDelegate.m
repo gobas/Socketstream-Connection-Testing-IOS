@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "StartViewController.h"
 #import "ResultsViewController.h"
+#import "ConfigViewController.h"
 
 @implementation AppDelegate
 
@@ -20,14 +21,26 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+  
+  NSUserDefaults *defs = [NSUserDefaults standardUserDefaults];
+  if ([defs valueForKey:@"url"] == nil) {
+    [defs setValue:@"testing.shrnts.de" forKey:@"url"];
+    [defs synchronize];
+  }
+  if ([defs valueForKey:@"port"] == nil) {
+    [defs setValue:@"5555" forKey:@"port"];
+    [defs synchronize];
+  }
+  
   self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
   
   UIViewController *viewController1 = [[StartViewController alloc] initWithNibName:@"StartView" bundle:nil];
   UIViewController *viewController2 = [[ResultsViewController alloc] initWithStyle:UITableViewStylePlain];
+  UIViewController *viewController3 = [[ConfigViewController alloc] initWithNibName:@"ConfigView" bundle:nil];
   
   self.tabBarController = [[UITabBarController alloc] init];
   self.tabBarController.delegate = self;
-  self.tabBarController.viewControllers = [NSArray arrayWithObjects:viewController1, viewController2, nil];
+  self.tabBarController.viewControllers = [NSArray arrayWithObjects:viewController1, viewController2, viewController3, nil];
   self.window.rootViewController = self.tabBarController;
   [self.window makeKeyAndVisible];
   return YES;

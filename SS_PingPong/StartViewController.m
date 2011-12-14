@@ -78,9 +78,9 @@
  */
 -(IBAction)connect:(id)sender {
   self.socket = [[SocketIO alloc]initWithDelegate:self];
-  //[socket connectToHost:@"testing.shrnts.de" onPort:5555];
-  [socket connectToHost:@"localhost" onPort:3000];
   
+  //[socket connectToHost:@"testing.shrnts.de" onPort:5555];
+  [socket connectToHost:[[NSUserDefaults standardUserDefaults]valueForKey:@"url"] onPort:[[[NSUserDefaults standardUserDefaults]valueForKey:@"port"]intValue] ];
 }
 
 /**
