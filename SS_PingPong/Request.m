@@ -2,7 +2,7 @@
 //  Request.m
 //  SS_PingPong
 //
-//  Created by Sebastian Kruschwitz on 13.12.11.
+//  Created by Sebastian Kruschwitz on 14.12.11.
 //  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
 //
 
@@ -11,7 +11,13 @@
 
 @implementation Request
 
-@dynamic send;
 @dynamic result;
+@dynamic send;
+@dynamic createdAt;
+
+-(void)awakeFromInsert {
+  [super awakeFromInsert];
+  [self setValue:[NSDate date] forKey:@"createdAt"];
+}
 
 @end

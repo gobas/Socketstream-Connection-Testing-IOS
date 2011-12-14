@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		963E4CDC14989EC6001BA4AB /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 963E4CDB14989EC6001BA4AB /* Icon.png */; };
+		963E4CDF14989ECA001BA4AB /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 963E4CDE14989ECA001BA4AB /* Icon@2x.png */; };
+		963E4CE21498A6F7001BA4AB /* Request.m in Sources */ = {isa = PBXBuildFile; fileRef = 963E4CE11498A6F7001BA4AB /* Request.m */; };
 		965BC51B1497C7AD00E6D171 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 965BC51A1497C7AD00E6D171 /* UIKit.framework */; };
 		965BC51D1497C7AD00E6D171 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 965BC51C1497C7AD00E6D171 /* Foundation.framework */; };
 		965BC51F1497C7AD00E6D171 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 965BC51E1497C7AD00E6D171 /* CoreGraphics.framework */; };
@@ -23,7 +26,6 @@
 		965BC54E1497C92500E6D171 /* first@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 965BC54A1497C92500E6D171 /* first@2x.png */; };
 		965BC54F1497C92500E6D171 /* second.png in Resources */ = {isa = PBXBuildFile; fileRef = 965BC54B1497C92500E6D171 /* second.png */; };
 		965BC5501497C92500E6D171 /* second@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 965BC54C1497C92500E6D171 /* second@2x.png */; };
-		965BC5581497CBF000E6D171 /* Request.m in Sources */ = {isa = PBXBuildFile; fileRef = 965BC5571497CBF000E6D171 /* Request.m */; };
 		965BC5D51497D08900E6D171 /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 965BC5981497D08900E6D171 /* ASIAuthenticationDialog.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		965BC5D61497D08900E6D171 /* ASIDataCompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = 965BC59B1497D08900E6D171 /* ASIDataCompressor.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		965BC5D71497D08900E6D171 /* ASIDataDecompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = 965BC59D1497D08900E6D171 /* ASIDataDecompressor.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -59,6 +61,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		963E4CDB14989EC6001BA4AB /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		963E4CDE14989ECA001BA4AB /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
+		963E4CE01498A6F7001BA4AB /* Request.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Request.h; sourceTree = "<group>"; };
+		963E4CE11498A6F7001BA4AB /* Request.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Request.m; sourceTree = "<group>"; };
 		965BC5161497C7AD00E6D171 /* SS_PingPong.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SS_PingPong.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		965BC51A1497C7AD00E6D171 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		965BC51C1497C7AD00E6D171 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -81,8 +87,6 @@
 		965BC54A1497C92500E6D171 /* first@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "first@2x.png"; sourceTree = "<group>"; };
 		965BC54B1497C92500E6D171 /* second.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = second.png; sourceTree = "<group>"; };
 		965BC54C1497C92500E6D171 /* second@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "second@2x.png"; sourceTree = "<group>"; };
-		965BC5561497CBF000E6D171 /* Request.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Request.h; sourceTree = "<group>"; };
-		965BC5571497CBF000E6D171 /* Request.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Request.m; sourceTree = "<group>"; };
 		965BC5971497D08900E6D171 /* ASIAuthenticationDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIAuthenticationDialog.h; sourceTree = "<group>"; };
 		965BC5981497D08900E6D171 /* ASIAuthenticationDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIAuthenticationDialog.m; sourceTree = "<group>"; };
 		965BC5991497D08900E6D171 /* ASICacheDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASICacheDelegate.h; sourceTree = "<group>"; };
@@ -170,6 +174,8 @@
 		965BC50B1497C7AD00E6D171 = {
 			isa = PBXGroup;
 			children = (
+				963E4CDE14989ECA001BA4AB /* Icon@2x.png */,
+				963E4CDB14989EC6001BA4AB /* Icon.png */,
 				965BC5221497C7AD00E6D171 /* SS_PingPong */,
 				965BC5191497C7AD00E6D171 /* Frameworks */,
 				965BC5171497C7AD00E6D171 /* Products */,
@@ -243,9 +249,9 @@
 		965BC5591497CBF900E6D171 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				963E4CE01498A6F7001BA4AB /* Request.h */,
+				963E4CE11498A6F7001BA4AB /* Request.m */,
 				965BC52E1497C7AD00E6D171 /* SS_PingPong.xcdatamodeld */,
-				965BC5561497CBF000E6D171 /* Request.h */,
-				965BC5571497CBF000E6D171 /* Request.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -407,6 +413,8 @@
 				965BC5501497C92500E6D171 /* second@2x.png in Resources */,
 				965BC5DE1497D08900E6D171 /* AsyncSocket Documentation.html in Resources */,
 				965BC5E11497D08900E6D171 /* changes.txt in Resources */,
+				963E4CDC14989EC6001BA4AB /* Icon.png in Resources */,
+				963E4CDF14989ECA001BA4AB /* Icon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -422,7 +430,6 @@
 				965BC5301497C7AD00E6D171 /* SS_PingPong.xcdatamodeld in Sources */,
 				965BC5421497C86600E6D171 /* StartViewController.m in Sources */,
 				965BC5471497C87900E6D171 /* ResultsViewController.m in Sources */,
-				965BC5581497CBF000E6D171 /* Request.m in Sources */,
 				965BC5D51497D08900E6D171 /* ASIAuthenticationDialog.m in Sources */,
 				965BC5D61497D08900E6D171 /* ASIDataCompressor.m in Sources */,
 				965BC5D71497D08900E6D171 /* ASIDataDecompressor.m in Sources */,
@@ -449,6 +456,7 @@
 				965BC5EE1497D08900E6D171 /* RegexKitLite.m in Sources */,
 				965BC5EF1497D08900E6D171 /* SocketIO.m in Sources */,
 				965BC5F01497D08900E6D171 /* WebSocket.m in Sources */,
+				963E4CE21498A6F7001BA4AB /* Request.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -556,6 +564,7 @@
 				965BC5351497C7AD00E6D171 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

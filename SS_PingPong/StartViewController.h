@@ -21,6 +21,7 @@
   IBOutlet UIButton *disconnectButton;
   IBOutlet UIButton *startSendButton;
   IBOutlet UIButton *stopSendButton;
+  
 }
 
 @property(strong, nonatomic) UIButton *connectButton;
@@ -36,7 +37,6 @@
 
 -(IBAction)connect:(id)sender;
 -(IBAction)disconnect:(id)sender;
-
 -(IBAction)startSending:(id)sender;
 -(IBAction)stopSending:(id)sender;
 

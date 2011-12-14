@@ -7,6 +7,8 @@
 //
 
 #import "StartViewController.h"
+#import "Request.h"
+#import "AppDelegate.h"
 
 @implementation StartViewController
 
@@ -71,20 +73,66 @@
 
 #pragma mark - User action
 
+/**
+ Erstellt die WebSocket-Verbindung zum Server.
+ */
 -(IBAction)connect:(id)sender {
   self.socket = [[SocketIO alloc]initWithDelegate:self];
-  [socket connectToHost:@"testing.shrnts.de" onPort:5555];
+  //[socket connectToHost:@"testing.shrnts.de" onPort:5555];
+  [socket connectToHost:@"localhost" onPort:3000];
   
-  sendNumber = [NSNumber numberWithInt:0];
 }
 
+/**
+ Trennt die WebSocket-Verbindung.
+ */
 -(IBAction)disconnect:(id)sender {
+  //[self.timer invalidate];
+  [timer performSelectorInBackground:@selector(invalidate) withObject:nil];
   [self.socket disconnect];
 }
 
--(void)sendRequest {
-  NSLog(@"sendRequest Methode aufgerufen");
+/**
+ Startet den Timer zum Senden von Daten an den Server.
+ Die Methode wird ueber den Button auf der GUI aufgerufen.
+ */
+-(IBAction)startSending:(id)sender {
+  self.startSendButton.enabled = NO;
+  self.stopSendButton.enabled = YES;
   
+  //starte den Timer in einem Thread
+  [self performSelectorInBackground:@selector(startSendingInThread) withObject:nil];
+}
+
+/**
+ Stoppt den Timer, der Requests an den Server sendet.
+ */
+-(IBAction)stopSending:(id)sender {
+  self.startSendButton.enabled = YES;
+  self.stopSendButton.enabled = NO;
+  
+  //[self.timer invalidate];
+  [timer performSelectorInBackground:@selector(invalidate) withObject:nil];
+}
+
+/**
+ Erstellt den Timer und setzt die Ausfuehrung in einen extra RunLoop.
+ */
+-(void)startSendingInThread {
+  @autoreleasepool {
+    NSRunLoop *runLoop = [NSRunLoop currentRunLoop];
+    
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(sendRequest) userInfo:nil repeats:YES];
+    
+    [runLoop addTimer:self.timer forMode:NSDefaultRunLoopMode];
+    [runLoop run];
+  }
+}
+
+/**
+ Methode die periodische durch den Timer aufgerufen wird.
+ */
+-(void)sendRequest {  
   NSMutableDictionary *data = [NSMutableDictionary dictionary];
   [data setObject:@"app.sendTimeStamp" forKey:@"method"];
   [data setObject:[NSArray arrayWithObject:sendNumber] forKey:@"params"];
@@ -94,39 +142,26 @@
   [socket sendEvent:@"server" withData:data andAcknowledge:@selector(callback:)];
 }
 
+/**
+ Callback-Methode der send-Methode
+ */
 -(void)callback:(id)packet {
   NSLog(@"CALLBACK: %@", packet);
   NSLog(@"received: packet.result: %@", [packet objectForKey:@"result"]);
   
-  sendNumber = [NSNumber numberWithInt:[[packet objectForKey:@"result"]intValue]];
-}
-
--(void)startSendingInThread {
-  @autoreleasepool {
-    NSRunLoop *runLoop = [NSRunLoop currentRunLoop];
-    
-    NSLog(@"startSending geklickt");
-    
-    self.timer = [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(sendRequest) userInfo:nil repeats:YES];
-    
-    [runLoop addTimer:self.timer forMode:NSDefaultRunLoopMode];
-    [runLoop run];
+  AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication]delegate];
+  
+  Request *request = (Request*)[NSEntityDescription insertNewObjectForEntityForName:@"Request" inManagedObjectContext: [appDelegate managedObjectContext] ];
+  request.send = sendNumber; 
+  
+  if ([packet objectForKey:@"result"] != nil) {
+    request.result = [NSNumber numberWithInt:[[packet objectForKey:@"result"]intValue]];
   }
-}
-
--(IBAction)startSending:(id)sender {
-  self.startSendButton.enabled = NO;
-  self.stopSendButton.enabled = YES;
+  [appDelegate saveContext];
   
-  [self performSelectorInBackground:@selector(startSendingInThread) withObject:nil];
-}
-
--(IBAction)stopSending:(id)sender {
-  self.startSendButton.enabled = YES;
-  self.stopSendButton.enabled = NO;
+  //aktualisiere die zu sendende Nummer, mit dem response vom Server
+  self.sendNumber = [NSNumber numberWithInt:[[packet objectForKey:@"result"]intValue]];
   
-  NSLog(@"stop sending geklickt");
-  [self.timer invalidate];
 }
 
 
@@ -135,6 +170,8 @@
 - (void) socketIODidConnect:(SocketIO *)socket {
   NSLog(@"socket did connect");
   self.connectionStatus.text = @"connected";
+  
+  self.sendNumber = [NSNumber numberWithInt:0];
   
   self.connectButton.enabled = NO;
   self.disconnectButton.enabled = YES;
@@ -145,6 +182,8 @@
 - (void) socketIODidDisconnect:(SocketIO *)socket {
   NSLog(@"socket did disconnect");
   self.connectionStatus.text = @"disconnected";
+  
+  [timer performSelectorInBackground:@selector(invalidate) withObject:nil];
   
   self.connectButton.enabled = YES;
   self.disconnectButton.enabled = NO;
@@ -160,7 +199,6 @@
 - (void) socketIO:(SocketIO *)socket didSendMessage:(SocketIOPacket *)packet {
   //NSLog(@"didSendMessage: %@", packet);
 }
-
 
 
 @end

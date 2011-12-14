@@ -7,8 +7,11 @@
 //
 
 #import "ResultsViewController.h"
+#import "AppDelegate.h"
 
 @implementation ResultsViewController
+
+@synthesize data;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -53,6 +56,10 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+  NSLog(@"viewWillAppear");
+  
+  self.data = [NSMutableArray arrayWithArray:[self fetchAllEntities]];
+  [self.tableView reloadData];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -76,20 +83,19 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 0;
+    return [data count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -102,6 +108,8 @@
     }
     
     // Configure the cell...
+  NSString *text = [NSString stringWithFormat:@"Send: %i - Received: %i", [[[data objectAtIndex:indexPath.row]valueForKey:@"send"]intValue], [[[data objectAtIndex:indexPath.row]valueForKey:@"result"]intValue]];
+  cell.textLabel.text = text;
     
     return cell;
 }
@@ -129,21 +137,6 @@
 }
 */
 
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 #pragma mark - Table view delegate
 
@@ -156,6 +149,30 @@
      // Pass the selected object to the new view controller.
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
+}
+
+
+#pragma mark - Data Core
+
+-(NSArray*)fetchAllEntities {
+  AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication]delegate];
+
+  NSManagedObjectContext *moc = [appDelegate managedObjectContext];
+  NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"Request" inManagedObjectContext:moc];
+  NSFetchRequest *request = [[NSFetchRequest alloc]init];
+  [request setEntity:entityDescription];
+  
+  NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc]initWithKey:@"createdAt" ascending:NO];
+  [request setSortDescriptors:[NSArray arrayWithObject:sortDescriptor]];
+  
+  NSError *error = nil;
+  NSArray *array = [moc executeFetchRequest:request error:&error];
+  if (array == nil) {
+    //deal with error
+    return nil;
+  }
+  
+  return array;
 }
 
 @end

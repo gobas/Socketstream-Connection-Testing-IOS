@@ -2,7 +2,7 @@
 //  Request.h
 //  SS_PingPong
 //
-//  Created by Sebastian Kruschwitz on 13.12.11.
+//  Created by Sebastian Kruschwitz on 14.12.11.
 //  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
 //
 
@@ -12,7 +12,8 @@
 
 @interface Request : NSManagedObject
 
-@property (nonatomic, retain) NSNumber * send;
 @property (nonatomic, retain) NSNumber * result;
+@property (nonatomic, retain) NSNumber * send;
+@property (nonatomic, retain) NSDate * createdAt;
 
 @end

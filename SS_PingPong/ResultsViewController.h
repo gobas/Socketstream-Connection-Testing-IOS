@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ResultsViewController : UITableViewController
+@interface ResultsViewController : UITableViewController {
+  NSMutableArray *data;
+}
+
+@property(strong, nonatomic) NSMutableArray *data;
+
+-(NSArray*)fetchAllEntities;
 
 @end
