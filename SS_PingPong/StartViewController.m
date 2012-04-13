@@ -193,11 +193,11 @@
 
 - (void) socketIO:(SocketIO *)socket didReceiveEvent:(SocketIOPacket *)packet {
   //NSLog(@"didReceiveEvent() >>> data: %@", packet.data);
- // NSLog(@"didReceiveEvent() >>> data: %@", packet.data);
+  NSLog(@"didReceiveEvent() >>> data: %@", packet.data);
 }
 
 - (void) socketIO:(SocketIO *)socket didSendMessage:(SocketIOPacket *)packet {
-  //NSLog(@"didSendMessage: %@", packet);
+  NSLog(@"didSendMessage: %@", packet);
 }
 
 
